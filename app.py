@@ -61,10 +61,10 @@ def data():
         mhp_data = []
         vcr_data = []
         hw_data = []
-        stateList.append(str(all_df.iloc[index]['state']))
-        abbrList.append(str(all_df.iloc[index]['abbr']))
-        lat_data.append(str(all_df.iloc[index]['lat']))
-        lon_data.append(str(all_df.iloc[index]['long']))
+        stateList.append((all_df.iloc[index]['state']))
+        abbrList.append((all_df.iloc[index]['abbr']))
+        lat_data.append((all_df.iloc[index]['lat']))
+        lon_data.append((all_df.iloc[index]['long']))
         
 #         #load the MHI data
         for x in range(21,29):
@@ -86,12 +86,12 @@ def data():
         state_set = {
             'state': stateList,
             'abbr': abbrList,
-            'lat': str(lat_data),
-            'lon': str(lon_data),
-            'mhi_data': str(mhi_data),
-            'mhp_data': str(mhp_data),
-            'vcr_data': str(vcr_data),
-            'hw_data': str(hw_data)
+            'lat': (lat_data),
+            'lon': (lon_data),
+            'mhi_data': (mhi_data),
+            'mhp_data': (mhp_data),
+            'vcr_data': (vcr_data),
+            'hw_data': (hw_data)
         }
         result_set.append(state_set)
 
