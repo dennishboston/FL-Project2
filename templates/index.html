@@ -1,43 +1,96 @@
 <!DOCTYPE html>
-<html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Belly Button Biodiversity</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/appStyle.css') }}">
-    
+<html lang="en">
+        <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <meta http-equiv="X-UA-Compatible" content="ie=edge">
+            <title>Front Left Project 2</title>
+            <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+            <script src="https://d3js.org/d3.v4.min.js"></script>
+            <script src="https://unpkg.com/leaflet@1.0.0-rc.3/dist/leaflet.js"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.5.0/d3.min.js"></script>
+  <!-- Bootstrap CDN -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <link rel="stylesheet" href=style.css>
+  <style>
+  </style>
 </head>
 
 <body>
-    <div class="container">
-        <div class="jumbotron" style="text-align: center">
-            <h1>Socio-Economic impacts of Drilling</h1>
-            <h1>Dashboard</h1>
-            <p>Use the charts below to explore the dataset</p>
+  <!-- Creates the Overall Grid -->
+  <div class="container-fluid">
+
+    <!-- Row 1 -->
+    <div class="row">
+      <div id="demo"class="col-md-12">
+        <h2>GEOJSON of lower 48-color states by number of drilling locations, able to dynamically change with range slider located underneath</h2>
         </div>
-
-
-        <div class="row">
-            <div class="col-md-12">
-              <table class="table table-striped">
-                <thead>
-                  <tr>
-                    <th>Run the routes to get data</th>
-                  </tr>
-                </thead>
-                <tbody>
-                        <tr><td>Routes to test the python json construction to build plotly charts </td></tr>
-                        <tr><td>/data - get all the details from the data base </td></tr>
-                </tbody>
-              </table>
-            </div>
-          </div>
     </div>
-    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
-    <script src="{{ url_for('static', filename='js/jsApp.js') }}"></script>
 
+    <!-- Row 2 -->
+    <div class="row">
+      <div class="col-md-2">
+        </div>
+          <div class="col-md-8 slidecontainer" onchange="getData(myRange.value)">
+            <h2>Range Slider:</h2>
+            <input type="range" min="2009" max="2016" value="2009" class="slider" id="myRange">
+          </div>
+      </div>
+      <div class="col-md-2">
+      </div>
+    </div>
+
+    <!-- Row 3 -->
+    <div class="row">
+      <div class="col-md-2">
+        </div>
+      <div class ="col-md-3">
+            <h2>Variables vs time/earthquakes</h2>
+            <select id="selScatterDataset" onchange="getScatterData(this.value)">
+                <option value="income">Median Income</option>
+                <option value="housing">Median Housing</option>
+                <option value="crime">Crime</option>
+            </select>
+      </div>
+      <div class="col-md-2">
+      </div>
+      <div class="col-md-5">
+          <h2> State specific GEOJSON map.  State specific GEOJSON map.   State specific GEOJSON map</h2>
+      </div>
+    </div>
+    
+
+    <!-- Row 4 -->
+    <div class="row">
+      <div id ="scatter" class="col-md-7">
+        <h2>Scatter chart: number of drilling sites vs dependent variable (selected via dropdown bttn) each point is a state that can be selected</h2>
+      </div>
+      <div id ="line" class="col-md-5">
+        <h2>Line Chart: Years vs dependent variable for selected state</h2>
+        <select id="selLineDataSet" onchange = "getLineData(this.value)">
+                <option value="income">Median Income</option>
+                <option value="housing">Median Housing</option>
+                <option value="crime">Crime</option>        
+            </select>
+      </div>
+    </div>
+  </div>
+  <!-- <h2>Variables vs time/earthquakes</h2>
+  <select id="selScatterDataset" onchange="getScatterData(this.value)">
+      <option value="income">Median Income</option>
+      <option value="housing">Median Housing</option>
+      <option value="crime">Crime</option>
+  </select> -->
+
+
+
+  <div id="scatter"></div>
+  <div id="line"></div>
+
+
+  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+  <script src="{{ url_for('static', filename='js/plots.js') }}"></script>
+  <!-- <script src="plots.js"></script> -->
 </body>
-
 </html>

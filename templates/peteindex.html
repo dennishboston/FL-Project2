@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Project 2</title>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+</head>
+<body>
+    <h2>Variables vs time/earthquakes</h2>
+    <select id="selScatterDataset" onchange="getScatterData(this.value)">
+        <option value="income">Median Income</option>
+        <option value="housing">Median Housing</option>
+        <option value="crime">Crime</option>
+    </select>
+
+    <select id="selLineDataSet" onchange = "getLineData(this.value)">
+        <option value="income">Median Income</option>
+        <option value="housing">Median Housing</option>
+        <option value="crime">Crime</option>        
+    </select>
+
+    <div id="scatter"></div>
+    <div id="line"></div>
+
+    
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <script src="{{ url_for('static', filename='js/srkplots.js') }}"></script>
+    <!-- <script src="plots.js"></script> -->
+</body>
+</html>

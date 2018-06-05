@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Belly Button Biodiversity</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/appStyle.css') }}">
+    
+</head>
+
+<body>
+    <div class="container">
+        <div class="jumbotron" style="text-align: center">
+            <h1>Socio-Economic impacts of Drilling</h1>
+            <h1>Dashboard</h1>
+            <p>Use the charts below to explore the dataset</p>
+        </div>
+
+
+        <div class="row">
+            <div class="col-md-12">
+              <table class="table table-striped">
+                <thead>
+                  <tr>
+                    <th>Run the routes to get data</th>
+                  </tr>
+                </thead>
+                <tbody>
+                        <tr><td>Routes to test the python json construction to build plotly charts </td></tr>
+                        <tr><td>/data - get all the details from the data base </td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+    </div>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <script src="{{ url_for('static', filename='js/jsApp.js') }}"></script>
+
+</body>
+
+</html>
