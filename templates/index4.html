@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Project 2</title>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.5.0/d3.min.js"></script>
+    <script src="https://unpkg.com/leaflet@1.0.0-rc.3/dist/leaflet.js"></script>
+    <!-- JM's code to add -->    
+    <script src="https://d3js.org/d3.v4.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/wellstyle.css') }}">
+    <!-- -->
+</head>
+<body>
+    <!-- JM's code to add -->    
+    <script src="{{ url_for('static', filename='js/frontleft.js') }}"></script>
+    <!-- <script type="text/javascript" src="js/frontleft.js"></script> -->
+    <div class="slidecontainer" onchange="getHWData(myRange.value)">
+        <input type="range" min="2009" max="2016" value="2009" class="slider" id="myRange">
+    </div>
+
+    <h3 id="demo"></h3>
+    <!-- -->
+
+    <h2>Variables vs time/earthquakes</h2>
+    <select id="selScatterDataset" onchange="getScatterData(this.value)">
+        <option value="income">Median Income</option>
+        <option value="housing">Median Housing</option>
+        <option value="crime">Crime</option>
+    </select>
+
+    <!-- <select id="selLineDataSet" onchange = "getLineData(this.value)">
+        <option value="income">Median Income</option>
+        <option value="housing">Median Housing</option>
+        <option value="crime">Crime</option>        
+    </select> -->
+
+    <div id="scatter"></div>
+    <div id="line"></div>
+    <div><iframe height="200" width="300" src="/state"></iframe></div>
+
+
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <script src="{{ url_for('static', filename='js/plotspjr.js') }}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.5.0/d3.min.js"></script>
+    <script src="https://unpkg.com/leaflet@1.0.0-rc.3/dist/leaflet.js"></script>
+        <!-- <script src="plots.js"></script> -->
+</body>
+</html>

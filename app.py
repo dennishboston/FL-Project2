@@ -97,6 +97,11 @@ def data():
 
     return jsonify(result_set)
 
+@app.route("/state")
+def state():
+    
+    return render_template("state_specific.html")
+
 
 if __name__ == "__main__":
     app.run(debug=True)

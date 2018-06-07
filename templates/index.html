@@ -12,85 +12,115 @@
             <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.5.0/d3.min.js"></script>
   <!-- Bootstrap CDN -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-  <link rel="stylesheet" href=style.css>
+  <!-- <link rel="stylesheet" src="{{ url_for('static', filename='css/style.css') }}"> -->
+  <!-- JM's code to add -->    
+  <script src="https://d3js.org/d3.v4.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/WellStyle.css') }}">
+  
+<!-- -->
   <style>
+    html,
+body,
+#map {
+  height: 100%;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  display: block;
+
+  /* overflow-x:auto; */
+  
+}
+#graphs
+{
+  height: 100%;
+  padding: 0;
+  margin: 0;
+  width: 1170px;
+  display: block;
+  text-align: center;
+  
+
+}
+
+/* div {
+    border: solid black 1px;
+  } */
   </style>
+  
 </head>
 
 <body>
   <!-- Creates the Overall Grid -->
-  <div class="container-fluid">
+  <div class="container">
 
     <!-- Row 1 -->
     <div class="row">
-      <div id="demo"class="col-md-12">
-        <h2>GEOJSON of lower 48-color states by number of drilling locations, able to dynamically change with range slider located underneath</h2>
+      <div class="col-md-12">
+        <h3>GEOJSON of lower 48-color states by number of drilling locations, able to dynamically change with range slider located underneath</h3>
         </div>
     </div>
 
     <!-- Row 2 -->
     <div class="row">
-      <div class="col-md-2">
-        </div>
-          <div class="col-md-8 slidecontainer" onchange="getData(myRange.value)">
-            <h2>Range Slider:</h2>
-            <input type="range" min="2009" max="2016" value="2009" class="slider" id="myRange">
+      <div class="col-md-12">
+          <div id="john"></div>  
+          <script src="{{ url_for('static', filename='js/frontleft3.js') }}"></script>
+          <div class="slidecontainer col-md-8" onchange="getHWData(myRange.value)">
+              <input type="range" min="2009" max="2016" value="2009" class="slider" id="myRange">
+              <h3 id="demo"></h3>
           </div>
-      </div>
-      <div class="col-md-2">
       </div>
     </div>
 
-    <!-- Row 3 -->
+  <!-- row 3 -->
     <div class="row">
-      <div class="col-md-2">
-        </div>
-      <div class ="col-md-3">
-            <h2>Variables vs time/earthquakes</h2>
-            <select id="selScatterDataset" onchange="getScatterData(this.value)">
+        <div class="col-md-12">
+            <h3 align="center">Variables vs time/earthquakes</h3>
+            <p align="center">
+              <select id="selScatterDataset" onchange="getScatterData(this.value)">
                 <option value="income">Median Income</option>
                 <option value="housing">Median Housing</option>
                 <option value="crime">Crime</option>
-            </select>
-      </div>
-      <div class="col-md-2">
-      </div>
-      <div class="col-md-5">
-          <h2> State specific GEOJSON map.  State specific GEOJSON map.   State specific GEOJSON map</h2>
-      </div>
+              </select>
+            </p>
+        </div>
     </div>
     
+  
 
-    <!-- Row 4 -->
+    <!-- row 4 -->
     <div class="row">
-      <div id ="scatter" class="col-md-7">
-        <h2>Scatter chart: number of drilling sites vs dependent variable (selected via dropdown bttn) each point is a state that can be selected</h2>
+        <div class="col-md-6">
+            <div id="scatter"></div>
+        </div>
+        <div class="col-md-6">
+            <div id="line"></div>
+        </div>
+        </div>
+        
+        <!-- row 5 -->
+      <div class="row">
+        <h3 align="center">US earthquakes 2009 - 2016 (Mag >5.0)</h3>
       </div>
-      <div id ="line" class="col-md-5">
-        <h2>Line Chart: Years vs dependent variable for selected state</h2>
-        <select id="selLineDataSet" onchange = "getLineData(this.value)">
-                <option value="income">Median Income</option>
-                <option value="housing">Median Housing</option>
-                <option value="crime">Crime</option>        
-            </select>
+      <!-- row 6 -->
+      <div class="row">
+        <div class="col-md-12">
+          <div align="center"><iframe height="900" width="900" src="/state"></iframe></div>
+        </div> 
       </div>
-    </div>
-  </div>
-  <!-- <h2>Variables vs time/earthquakes</h2>
-  <select id="selScatterDataset" onchange="getScatterData(this.value)">
-      <option value="income">Median Income</option>
-      <option value="housing">Median Housing</option>
-      <option value="crime">Crime</option>
-  </select> -->
+      
 
 
 
+        
+<!-- 
   <div id="scatter"></div>
   <div id="line"></div>
-
+  <div><iframe height="200" width="300" src="/state"></iframe></div> -->
 
   <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
-  <script src="{{ url_for('static', filename='js/plots.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/plotspjr.js') }}"></script>
   <!-- <script src="plots.js"></script> -->
 </body>
 </html>
