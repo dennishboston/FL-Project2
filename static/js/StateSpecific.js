@@ -30,12 +30,20 @@ function createMarkers(response){
 
 
         if (turf.booleanPointInPolygon(pt, poly)){
-        var quake = L.marker([response.features[i].geometry.coordinates[1], response.features[i].geometry.coordinates[0]])
-        .bindPopup("<h3>" + response.features[i].properties.place + "<h3><h3>Magnitude: " + response.features[i].properties.mag +"<h3>")
-        // console.log(response.features[i].geometry.coordinates[1]);
-        quakeMarkers.push(quake);
-        }
-        console.log(turf.booleanPointInPolygon(pt, poly));
+            var quake = L.circleMarker([response.features[i].geometry.coordinates[1], response.features[i].geometry.coordinates[0]]).setStyle({color: 'red', radius: 2*(10^((response.features[i].properties.mag-5)*10))})
+            .bindPopup("<h3>" + response.features[i].properties.place + "<h3><h3>Magnitude: " + response.features[i].properties.mag +"<h3>")
+            //console.log(((response.features[i].properties.mag-5)*10));
+            quakeMarkers.push(quake);
+            }
+        
+        
+        // if (turf.booleanPointInPolygon(pt, poly)){
+        // var quake = L.marker([response.features[i].geometry.coordinates[1], response.features[i].geometry.coordinates[0]])
+        // .bindPopup("<h3>" + response.features[i].properties.place + "<h3><h3>Magnitude: " + response.features[i].properties.mag +"<h3>")
+        // // console.log(response.features[i].geometry.coordinates[1]);
+        // quakeMarkers.push(quake);
+        // }
+        // console.log(turf.booleanPointInPolygon(pt, poly));
     //     console.log(poly.geometry.coordinates[0][0][0]);
     }
 

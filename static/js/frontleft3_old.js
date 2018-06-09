@@ -23,14 +23,12 @@ var path = d3.geoPath() // path generator that will convert GeoJSON to SVG paths
 
 //Create SVG element and append map to the SVG
 var svg = d3.select("#john")
-.append("svg")
-.attr("width", width)
-.attr("height", height);
+  .append("svg");
   
-  // svg
-  // .attr("width", width)
-  // .attr("height", height)
-  // .attr("align","center");
+  svg
+  .attr("width", width)
+  .attr("height", height)
+  .attr("align","center");
   
 // Load in my states data!
 function getHWData(year) {
@@ -226,7 +224,7 @@ function getHWData(year) {
 function renderMap(year, features, ramp, minVal, maxVal){
   // Update the current slider value (each time you drag the slider handle)
   d3.selectAll("path").remove();
-  d3.select('#john').selectAll('svg.legend').remove();
+  d3.select('body').selectAll('svg.legend').remove();
     // Bind the data to the SVG and create one path per GeoJSON feature
     svg.selectAll("path")
       .data(features)
@@ -242,49 +240,49 @@ function renderMap(year, features, ramp, minVal, maxVal){
     output.innerHTML = slider.value; // Display the default slider value
 
 		// add a legend
-		var w = 140, h = 300;
+		// var w = 140, h = 300;
 
-		var key = d3.select("#john")
-			.append("svg")
-			.attr("width", w)
-			.attr("height", h)
-			.attr("class", "legend");
+		// var key = svg
+		// 	.append("g")
+		// 	.attr("width", w)
+		// 	.attr("height", h)
+		// 	.attr("class", "legend");
 
-		var legend = key.append("defs")
-			.append("svg:linearGradient")
-			.attr("id", "gradient")
-			.attr("x1", "100%")
-			.attr("y1", "0%")
-			.attr("x2", "100%")
-			.attr("y2", "100%")
-			.attr("spreadMethod", "pad");
+		// var legend = key.append("defs")
+		// 	.append("svg:linearGradient")
+		// 	.attr("id", "gradient")
+		// 	.attr("x1", "100%")
+		// 	.attr("y1", "0%")
+		// 	.attr("x2", "100%")
+		// 	.attr("y2", "100%")
+		// 	.attr("spreadMethod", "pad");
 
-		legend.append("stop")
-			.attr("offset", "0%")
-			.attr("stop-color", highColor)
-			.attr("stop-opacity", 1);
+		// legend.append("stop")
+		// 	.attr("offset", "0%")
+		// 	.attr("stop-color", highColor)
+		// 	.attr("stop-opacity", 1);
 			
-		legend.append("stop")
-			.attr("offset", "100%")
-			.attr("stop-color", lowColor)
-			.attr("stop-opacity", 1);
+		// legend.append("stop")
+		// 	.attr("offset", "100%")
+		// 	.attr("stop-color", lowColor)
+		// 	.attr("stop-opacity", 1);
 
-		key.append("rect")
-			.attr("width", w - 100)
-			.attr("height", h)
-			.style("fill", "url(#gradient)")
-			.attr("transform", "translate(0,10)");
+		// key.append("rect")
+		// 	.attr("width", w - 100)
+		// 	.attr("height", h)
+		// 	.style("fill", "url(#gradient)")
+		// 	.attr("transform", "translate(0,10)");
 
-		var y = d3.scaleLinear()
-      .range([h, 0])
-      .domain([minVal, maxVal]);
+		// var y = d3.scaleLinear()
+    //   .range([h, 0])
+    //   .domain([minVal, maxVal]);
 
-		var yAxis = d3.axisRight(y);
+		// var yAxis = d3.axisRight(y);
 
-		key.append("g")
-			.attr("class", "y axis")
-			.attr("transform", "translate(41,10)")
-      .call(yAxis)
+		// key.append("g")
+		// 	.attr("class", "y axis")
+		// 	.attr("transform", "translate(41,10)")
+    //   .call(yAxis)
 
 
     //console.log(year);
